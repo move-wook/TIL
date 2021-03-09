@@ -110,13 +110,13 @@ TRACE라고 선언하면 모든 LEVEL 포함. INFO로 설정하면 info, warn, e
 
 3.7.1나와 같은경우 log4jdbc-log4j2를 이용하였다.
 
-Dependency 추가
+Dependency 추가  
 
-<dependency>
-     <groupId>org.bgee.log4jdbc-log4j2</groupId>
-     <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
-     <version>1.16</version>
-</dependency>
+    <dependency>
+        <groupId>org.bgee.log4jdbc-log4j2</groupId>
+        <artifactId>log4jdbc-log4j2-jdbc4</artifactId>
+        <version>1.16</version>
+    </dependency>
 
 
 
