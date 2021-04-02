@@ -1,0 +1,33 @@
+<div class="paging">
+    <c:if test="${finalPageNo > 1}">
+        <c:if test="${pageNo <> 1}">
+            <c:if test="${pageNo-10 >= firstPageNo}">
+                <a class="ico btn_page_frist"  onclick="javascript:goPage(${firstPageNo}); return false;" ><i>앞으로</i></a>
+                <fmt:parseNumber var="pagePrve" type="number" value="${((pageNo-blockSize-1)/blockSize)}" />
+                <a class="ico btn_page_prve" onclick="javascript:goPage(${ (pagePrve-(pagePrve%1)) * blockSize + 1 }); return false;" ><i>이전</i></a>
+            </c:if>
+        </c:if> 
+        <span class="page_num">
+        <c:forEach var="i" begin="${startPageNo}" end="${engPagrNo}" step="1">
+            <c:choose>
+                <c:when test="${i == pageNo}">
+                    <a href="javascript:;" class="here">${i}</a>
+                </c:when>
+                <c:otherwise>
+                    <span>
+                        <a href="javascript:goPage(${i})"><c:out value="${i}" /></a>
+                    </span>
+                </c:otherwise>
+            </c:choose>
+        </c:forEach>
+        </span>
+            <fmt:parseNumber var="var3" value="${(pageNo-1+blockSize)/blockSize}" integerOnly="true" />
+            <fmt:parseNumber var="pageNext" type="number" value="${(var3 * blockSize) +1 }" />
+            <c:if test="${(pageNext-(pageNext%1)) < finalPageNo }">
+                <a class="ico btn_page_next" onclick="javascript:goPage(${pageNext-(pageNext%1)}); return false;" ><i>다음</i></a>
+            </c:if>
+            <c:if test="${engPagrNo < finalPageNo}">
+                <a class="ico btn_page_last"  onclick="javascript:goPage(${finalPageNo}); return false;" ><i>뒤로</i></a>
+            </c:if>
+    </c:if>
+</div>
