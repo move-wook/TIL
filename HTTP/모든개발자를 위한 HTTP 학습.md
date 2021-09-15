@@ -250,4 +250,61 @@
             - 실제는 GET,HEAD정도만 사용함
 
 
+## 클라이언트에서 서버로 데이터 전송
+
+ - 쿼리 파라미터를 통한 데이터 전송
+    - GET 
+    - 주로 정렬 필터
+
+ - 메시지 바디를 통한 데이터 전송
+
+    - POST,PUT,PATCH
+    
+    - 회원 가입,상품 주문, 리소스 등록,리소스 변경
+ 
+ - HTML Form 데이터 전송
+
+    - submit 시 post 전송 get도 가능
+
+    - Content-Type : application/x-www-form-urlencoded 사용
+        - form의 내용을 메시지 바디를 통해서 전송
+        - 전송 데이터를 url encoding 처리
+    - Content-Type:multipart/form-data
+        - 파일 업로드 같은 바이너리 데이터 전송시 사용
+        - 다른 종류의 여러 파일과 폼의 내용 함께 전송가능
+    - HTML Form전송은 GET,POST만 지원함
+
+- HTTP API
+    -  서버 to 서버
+
+    -  앱 클라이언트
+
+    -  웹 클라이언트
+        - HTML 에서 FROM 전송 대신 스크립트를 통한 AJAX를 사용
+    -  Content-Type:application/json을 주로 사용 (사실상 표준)     
+
+## HTTP API 설계 예시  
+
+    - POST
      
+        - 클라이언틑 등록될 리소스의 URI를 모른다
+        - 서버가 새로 등록된 리소스 URI를 생성해준다
+        - 컬렉션
+            - 서버가 관리하는 리소스 디렉토리
+            - 서버가 리소스의 URI를 생성하고 관리
+            - (/)가 컬렉션
+    - PUT
+
+        - 클라이언트가 리소스 URI를 알고 있어야 한다 (키값을 알고 있어야한다.)
+        - 클라이언트가 직접 리소스의 URI를 지정한다.
+        - 스토어
+            - 클라이언트가 관리하는 리소스 저장소
+            - 클라이언트가 리소스의 URI를 알고 관리
+    - HTML FROM 사용
+        - HTML FORM은 GET,POST만 지원
+        - 컨트롤 URI
+            - GET,POST만 지원
+            - 리소스 경로 사용
+            - HTTP 메서드로 해결하기 애매한 경우 사용(HTTP API 포함)   
+
+## HTTP 상태 코드
