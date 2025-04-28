@@ -22,25 +22,38 @@
 
 ### ✅ 기존 방식 (널 체크 필요)
 
-java
+```java
 
-복사편집
-
-`public void doSomething(MyObject obj) {     if (obj == null) {         throw new Exception();     }     obj.doMethod(); }`
-
+public void doSomething(MyObject obj) {
+    if (obj == null) {
+     throw new Exception();
+    }
+    obj.doMethod(); }`
+```
 ### ✅ Null Object Pattern 적용
-
-java
-
-복사편집
-
-`class MyNullObject implements MyObject {     @Override     public void doMethod() {         // 아무 것도 하지 않음     } }  class MyRealObject implements MyObject {     @Override     public void doMethod() {         System.out.println("무엇인가 수행합니다.");     } }  public void doSomething(MyObject obj) {     obj.doMethod(); // 별도 null 체크 없이 바로 호출 }`
+```java
+class MyNullObject implements MyObject {
+    @Override
+    public void doMethod() {
+        // 아무 것도 하지 않음
+        }
+    }
+class MyRealObject implements MyObject {
+    @Override
+    public void doMethod() {
+         System.out.println("무엇인가 수행합니다.");
+         }
+    }
+public void doSomething(MyObject obj) {
+    obj.doMethod();
+    // 별도 null 체크 없이 바로 호출
+}
 
 - `MyNullObject`를 넘기면 아무런 동작 없이 지나갑니다.
     
 - `MyRealObject`를 넘기면 실제 동작이 수행됩니다.
     
-
+```
 ---
 
 ## 4. 확장 예시
